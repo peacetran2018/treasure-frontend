@@ -3,11 +3,13 @@
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve",
+        "start": "node server.js",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+		"heroku-postbuild": "ng build --prod",
+		"preinstall": "npm install -g @angular/cli @angular/compiler-cli typescript"
     },
     "private": true,
     "dependencies": {
@@ -20,6 +22,7 @@
         "@angular/platform-browser-dynamic": "~7.2.0",
         "@angular/router": "~7.2.0",
         "bootstrap": "^4.6.0",
+		"express": "^4.17.1",
         "core-js": "^2.5.4",
         "crypto-js": "^4.0.0",
         "lzutf8": "^0.6.0",
