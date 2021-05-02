@@ -67,14 +67,14 @@ export class TreasureLoginSignupComponent implements OnInit {
     }
   }
 
-  async onSignUp() {
-    this.signupForm.value.password = await this.securityHelper.encryptUsingPBKDF2(this.signupForm.value.username, this.signupForm.value.password);
+  async onSignUp() {    
     this.submitted = true;
     //when form is valid then stop here
     if (this.signupForm.invalid) {
       return;
     }
     this.loading = true;
+    this.signupForm.value.password = await this.securityHelper.encryptUsingPBKDF2(this.signupForm.value.username, this.signupForm.value.password);
     this.userService.signup(this.signupForm.value).subscribe(data => {
       alert("Signed Up Successfully!!!");
     }, error => {

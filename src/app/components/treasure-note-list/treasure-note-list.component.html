@@ -10,7 +10,7 @@
         <ul class="scrollbar">
             <li class="listItem" *ngFor="let note of listNote;" (click)="showContent($event,note.id)">
                 <input class="checkbox hidden" type="checkbox" (change)="selectedNote($event,note.id)">
-                <label class="label">{{note.title}}</label>
+                <label class="label" (click)="showContent($event,note.id)">{{note.title}}</label>
             </li>
         </ul>
     </div>

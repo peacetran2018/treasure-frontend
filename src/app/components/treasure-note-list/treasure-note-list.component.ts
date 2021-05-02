@@ -21,23 +21,30 @@ export class TreasureNoteListComponent implements OnInit {
   constructor(private noteService: NoteService, private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.currentUser.subscribe(user => {
-      if(user !== undefined){
-        this.userId = user.id
-      }      
-    });
+    this.getCurrentUserId();
+    this.loadNotes();
 
+  }
+
+  getCurrentUserId(){
+    this.userService.currentUser.subscribe(user => {
+      if (user !== undefined) {
+        this.userId = user.id
+      }
+    });
+  }
+
+  loadNotes() {
     this.noteService.getNotes().subscribe(data => {
-      this.allListNote = data.sort((x,y) => y.id - x.id);
-      console.log(data);
+      console.log(this.userId);
+      this.allListNote = data.sort((x, y) => y.id - x.id);
       this.listNote = data.filter(x => x.createdby == this.userId).sort((x, y) => y.id - x.id)
+      console.log(this.listNote);
       this.noteService.getNoteById(this.listNote[0].id, this.listNote);
       setTimeout(function () {
         document.getElementsByClassName("listItem")[0].classList.add("active");
       }, 900);
     });
-
-    
   }
 
   showContent(event, id: number) {
@@ -52,7 +59,12 @@ export class TreasureNoteListComponent implements OnInit {
         el.classList.remove("active");
       }
     })
-    event.target.classList.add("active");
+    if (event.target.localName == "label") {
+      event.target.parentElement.classList.add("active");
+    }
+    else {
+      event.target.classList.add("active");
+    }
   }
 
   addNote() {
@@ -89,7 +101,7 @@ export class TreasureNoteListComponent implements OnInit {
   removeNote() {
     if (this.listIdRemove.length > 0) {
       this.noteService.deleteNotes(this.listIdRemove).subscribe(x =>
-        this.noteService.getNotes().subscribe(data => {
+        this.noteService.notes.subscribe(data => {
           this.listNote = data.filter(x => x.createdby == this.userId).sort((x, y) => y.id - x.id)
           this.noteService.getNoteById(this.listNote[0].id, this.listNote);
           setTimeout(function () {

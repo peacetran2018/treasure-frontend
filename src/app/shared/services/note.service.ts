@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { note } from '../../shared/models/note.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,20 @@ export class NoteService {
   private noteDetail = new BehaviorSubject<note>(null);
   defaultNote = this.noteDetail.asObservable();
 
+  private listNote = new BehaviorSubject<note[]>(null);
+  notes = this.listNote.asObservable();
+
   constructor(private httpClient: HttpClient) {
     this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   }
 
   getNotes(): Observable<note[]> {
-    return this.httpClient.get<note[]>("http://localhost:5000/api/Values", {
+   return this.httpClient.get<note[]>("http://localhost:5000/api/Values", {
       headers: this.headers
-    });
+    }).pipe(map(data => {
+      this.listNote.next(data);
+      return data;
+    }));
   }
 
   getNoteById(id: number, listNote: note[]) {
