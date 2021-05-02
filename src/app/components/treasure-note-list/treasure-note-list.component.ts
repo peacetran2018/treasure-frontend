@@ -21,16 +21,16 @@ export class TreasureNoteListComponent implements OnInit {
   constructor(private noteService: NoteService, private userService: UserService) { }
 
   ngOnInit() {
-    this.noteService.RefreshGetNote.subscribe(()=>{
+    this.noteService.RefreshGetNote.subscribe(() => {
       this.loadNotes();
       this.getCurrentUserId();
     })
     this.getCurrentUserId();
-    this.loadNotes(); 
+    this.loadNotes();
 
   }
 
-  getCurrentUserId(){
+  getCurrentUserId() {
     this.userService.currentUser.subscribe(user => {
       if (user !== undefined) {
         this.userId = user.id
@@ -40,11 +40,11 @@ export class TreasureNoteListComponent implements OnInit {
 
   loadNotes() {
     this.noteService.getNotes().subscribe(data => {
-      console.log(this.userId);
       this.allListNote = data.sort((x, y) => y.id - x.id);
       this.listNote = data.filter(x => x.createdby == this.userId).sort((x, y) => y.id - x.id)
-      console.log(this.listNote);
       this.noteService.getNoteById(this.listNote[0].id, this.listNote);
+      this.listIdRemove = [];
+      this.listIdRemove.push(this.listNote[0].id);
       setTimeout(function () {
         document.getElementsByClassName("listItem")[0].classList.add("active");
       }, 900);
@@ -104,14 +104,9 @@ export class TreasureNoteListComponent implements OnInit {
 
   removeNote() {
     if (this.listIdRemove.length > 0) {
-      this.noteService.deleteNotes(this.listIdRemove).subscribe(x =>
-        this.noteService.notes.subscribe(data => {
-          this.listNote = data.filter(x => x.createdby == this.userId).sort((x, y) => y.id - x.id)
-          this.noteService.getNoteById(this.listNote[0].id, this.listNote);
-          setTimeout(function () {
-            document.getElementsByClassName("listItem")[0].classList.add("active");
-          }, 900);
-        }));
+      this.noteService.deleteNotes(this.listIdRemove).subscribe(x => {
+        //alert("")
+      });
     }
     else {
       alert("Please select at least 1 note");

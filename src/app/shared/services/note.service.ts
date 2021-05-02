@@ -64,6 +64,9 @@ export class NoteService {
       }),
       body: value,
     };
-    return this.httpClient.delete("http://localhost:5000/api/Values?value=" + value, options);
+    return this.httpClient.delete("http://localhost:5000/api/Values?value=" + value, options)
+    .pipe(tap(() => {
+      this._refreshGetNote.next();
+    }));;
   }
 }
