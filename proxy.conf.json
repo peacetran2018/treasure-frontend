@@ -1,0 +1,7 @@
+{
+    "/": {
+       "target": "https://treasure-note.herokuapp.com/",
+       "secure": false,
+       "logLevel": "debug"
+    }
+ }
