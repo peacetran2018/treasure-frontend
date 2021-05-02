@@ -20,8 +20,8 @@ export class UserService {
     return this.httpClient.post("http://localhost:5000/api/User", user);
   }
 
-  login(username: string, password: string): Observable<User> {
-    return this.httpClient.get<User>(`http://localhost:5000/api/User/${username}/${password}`, { headers: this.headers })
+  login(username: string): Observable<User> {
+    return this.httpClient.get<User>(`http://localhost:5000/api/User/${username}`, { headers: this.headers })
       .pipe(map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));

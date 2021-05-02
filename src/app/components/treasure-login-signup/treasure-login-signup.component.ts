@@ -94,7 +94,7 @@ export class TreasureLoginSignupComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    this.userService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(async x => {
+    this.userService.login(this.loginForm.value.username).subscribe(async x => {
       let decryptPassword = await this.securityHelper.decryptUsingFBKDF2(x.password, x.username);
       if (decryptPassword === this.loginForm.value.password) {
         this.router.navigate(['/treasure/note']);
