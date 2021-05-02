@@ -1,0 +1,20 @@
+<div class="detail-container">
+    <div class="detail-title">
+        <div>
+            <i class="fa fa-arrow-left" (click)="back()"></i>
+        </div>
+        <div>
+            <input type="text" class="title" #titlevalue value="{{note?.title}}">
+        </div>
+        <div>
+            <button class="btn-done" (click)="save()">Done</button>
+        </div>
+    </div>
+    <div class="detail-content">
+        <!-- <textarea class="content" #contentvalue>{{note.content}}</textarea> -->
+        <div class="lines">
+            <div class="content scrollbar" #contentvalue contenteditable [innerHtml]="note?.content" (input)="content=$event.srcElement.innerHTML">
+            </div>
+        </div>
+    </div>
+</div>

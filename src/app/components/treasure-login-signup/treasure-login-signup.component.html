@@ -1,0 +1,71 @@
+<div class="form">
+    <ul class="tab-group">
+        <li id="lisignup" class="tab active"><a (click)="Toggle('signup')">Sign Up</a></li>
+        <li id="lilogin" class="tab"><a (click)="Toggle('login')">Log In</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="signup">
+            <h1>Sign Up</h1>
+            <form [formGroup]="signupForm" (ngSubmit)="onSignUp()">
+                <div class="top-row">
+                    <div class="field-wrap">
+                        <input type="text" formControlName="firstname" placeholder="First Name *" />
+                        <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                            <div *ngIf="fSignUp.firstname.errors.required">First Name is required</div>
+                        </div>
+                    </div>
+
+                    <div class="field-wrap">
+                        <input type="text" formControlName="lastname" placeholder="Last Name *" />
+                        <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                            <div *ngIf="fSignUp.lastname.errors.required">Last Name is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field-wrap">
+                    <input type="text" formControlName="username" placeholder="Username *" />
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="fSignUp.username.errors.required">username is required</div>
+                    </div>
+                </div>
+
+                <div class="field-wrap">
+                    <input type="password" formControlName="password" placeholder="Password *" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="fSignUp.password.errors.required">Password is required</div>
+                        <div *ngIf="fSignUp.password.errors.minlength">Password must be at least 8 characters</div>
+                    </div>
+                </div>
+
+                <button [disabled]="loading" class="button button-block">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Sign Up
+                </button>
+            </form>
+        </div>
+        <div id="login" class="hidden">
+            <h1>Welcome Back!</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                <div class="field-wrap">
+                    <input type="text" formControlName="username" placeholder="Username *" />
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="fLogin.username.errors.required">username is required</div>
+                    </div>
+                </div>
+
+                <div class="field-wrap">
+                    <input type="password" formControlName="password" placeholder="Password *" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="fLogin.password.errors.required">Password is required</div>
+                    </div>
+                </div>
+
+                <button class="button button-block">Log In</button>
+
+            </form>
+        </div>
+    </div>
+    <!-- tab-content -->
+</div>
+<!-- /form -->

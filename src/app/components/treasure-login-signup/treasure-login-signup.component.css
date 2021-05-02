@@ -1,0 +1,144 @@
+.form {
+    background: white;
+    padding: 40px;
+    max-width: 600px;
+    margin: 40px auto;
+    border-radius: 1em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+    color: black;
+}
+
+.tab-group {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+}
+
+.tab-group:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.tab-group li a {
+    border-radius: 1em;
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    background: rgba(160, 179, 176, 0.25);
+    color: #a0b3b0;
+    font-size: 20px;
+    float: left;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.tab-group li a:hover {
+    background: #4B89DA;
+    color: #ffffff;
+}
+
+.tab-group .active a {
+    background: #4B89DA;
+    color: #ffffff;
+}
+
+.tab-content>div:first-child.show {
+    display: block;
+    transition: 1;
+    opacity: 1;
+}
+
+.tab-content>div:first-child.hidden {
+    display: none;
+    transition: 1;
+    opacity: 0;
+}
+
+.tab-content>div:last-child.show {
+    display: block;
+    opacity: 1;
+}
+
+.tab-content>div:last-child.hidden {
+    display: none;
+    transition: 1;
+    opacity: 0;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 300;
+    margin: 0 0 40px;
+}
+
+input {
+    font-size: 22px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px;
+    background: none;
+    border: 1px solid #a0b3b0;
+    border-radius: 1em;
+    transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+input:focus {
+    outline: 0;
+    border-color: #4B89DA;
+}
+
+.field-wrap {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.top-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.top-row>div {
+    float: left;
+    width: 48%;
+    margin-right: 4%;
+}
+
+.top-row>div:last-child {
+    margin: 0;
+}
+
+.button {
+    border: 0;
+    outline: none;
+    border-radius: 1em;
+    padding: 15px 0;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    background: #4B89DA;
+    color: #ffffff;
+    transition: all 0.5s ease;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.button:hover,
+.button:focus {
+    background: #3498db;
+}
+
+.button-block {
+    display: block;
+    width: 100%;
+}
+
+.invalid-feedback {
+    color: #c0392b;
+    font-size: 14pt;
+}

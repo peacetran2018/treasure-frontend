@@ -1,0 +1,155 @@
+.note-container {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-container>div {
+    /* flex: 1; */
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Title */
+
+.note-container>div.app-title {
+    flex: 2;
+    align-items: center;
+    padding: 0 1em;
+    background: #4B89DA;
+    color: white;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+}
+
+.note-container>div.app-title>.note-title {
+    font-size: 18pt;
+}
+
+.note-container>div.app-title>.note-button {
+    margin-left: auto;
+    font-size: 16pt;
+}
+
+.note-container>div.app-title>.note-button>i {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.note-container>div.app-title>.note-button>i.more {
+    border-radius: 50%;
+    padding: 1px 3px;
+    border: 1px solid white;
+}
+
+
+/* Listing */
+
+.note-container>div.app-listing {
+    flex-direction: column;
+    flex: 2;
+}
+
+.note-container>div.app-listing>ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 1em;
+    height: 620px;
+}
+
+.note-container>div.app-listing>ul>li {
+    margin-top: 0.5em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+    padding: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14pt;
+}
+
+.note-container>div.app-listing>ul>li.active {
+    background-color: #4B89DA;
+    color: white;
+}
+
+
+/* Footer */
+
+.note-container>div.app-footer {
+    align-items: center;
+    flex: 1;
+}
+
+.btn-add {
+    border-radius: 50%;
+    padding: 0.5em 1em;
+    background-color: #4B89DA;
+    border: none;
+    color: white;
+    margin-top: -2em;
+}
+
+.btn-add:hover {
+    background-color: #73B1F4;
+    cursor: pointer;
+}
+
+.btn-add>i {
+    font-size: 24pt;
+}
+
+.hidden {
+    display: none;
+}
+
+.show-checkbox {
+    display: inline;
+}
+
+.label {
+    margin-left: 0;
+}
+
+.show {
+    transition: 1s;
+    margin-left: 10px;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+    .note-container>div.app-listing>ul {
+        height: 62em;
+    }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+    .note-container>div.app-listing>ul {
+        height: 32em;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .note-container>div.app-listing>ul {
+        height: 46em;
+    }
+    .note-container>div.app-listing>ul>li {
+        font-size: 16pt;
+    }
+}
+
+@media screen and (max-height: 736px) {
+    .note-container>div.app-listing>ul {
+        height: 32em;
+    }
+}
+
+@media screen and (max-height: 667px) {
+    .note-container>div.app-listing>ul {
+        height: 28em;
+    }
+}
+
+@media screen and (max-height: 568px) {
+    .note-container>div.app-listing>ul {
+        height: 25em;
+    }
+}

@@ -1,0 +1,73 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    background-color: #ECF0F1;
+}
+
+.container {
+    padding-right: 20%;
+    padding-left: 20%;
+}
+
+.scrollbar {
+    float: left;
+    margin-bottom: 25px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.scrollbar:hover {
+    transform: inherit;
+    overflow: auto;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #555;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+    .container {
+        padding-right: 5%;
+        padding-left: 5%;
+        overflow: hidden;
+        padding-bottom: 5%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        padding-right: 5%;
+        padding-left: 5%;
+        overflow: hidden;
+        padding-bottom: 5%;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+    .container {
+        padding-right: 5%;
+        padding-left: 5%;
+        overflow: hidden;
+        padding-bottom: 5%;
+    }
+}

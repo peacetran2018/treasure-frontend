@@ -1,0 +1,20 @@
+<div class="note-container">
+    <div class="app-title">
+        <div class="note-title">Note</div>
+        <div class="note-button">
+            <i class="fa fa-trash" (click)="removeNote()"></i>
+            <i class="fa fa-ellipsis-h" (click)="showCheckBox()"></i>
+        </div>
+    </div>
+    <div class="app-listing">
+        <ul class="scrollbar">
+            <li class="listItem" *ngFor="let note of listNote;" (click)="showContent($event,note.id)">
+                <input class="checkbox hidden" type="checkbox" (change)="selectedNote($event,note.id)">
+                <label class="label">{{note.title}}</label>
+            </li>
+        </ul>
+    </div>
+    <div class="app-footer">
+        <button class="btn-add" (click)="addNote()"><i class="fa fa-plus"></i></button>
+    </div>
+</div>

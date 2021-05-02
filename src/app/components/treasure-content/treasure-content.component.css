@@ -1,0 +1,94 @@
+.main-content {
+    display: flex;
+    border-radius: 1em;
+    height: 50em;
+    position: relative;
+    left: 0;
+    transition: 0.5s;
+}
+
+.main-content>div {
+    width: 100%;
+}
+
+.note-listing {
+    border-radius: 1em;
+    margin-right: 10px;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+    flex: 1;
+}
+
+.note-detail {
+    border-radius: 1em;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+    flex: 2;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+    .main-content {
+        height: 76em;
+    }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+    .main-content {
+        height: 40em;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .main-content {
+        height: 57em;
+    }
+    .note-listing {
+        margin-right: 6%;
+        flex: none;
+    }
+    .note-detail {
+        flex: none;
+    }
+    .move-left {
+        left: -106%;
+        transition: 0.5s;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .main-content {
+        height: 45em;
+    }
+    .main-content>div {
+        flex-shrink: 0;
+    }
+    .note-listing {
+        margin-right: 20px;
+        flex: none;
+    }
+    .note-detail {
+        flex: none;
+    }
+    .move-left {
+        left: -106%;
+        transition: 0.5s;
+    }
+}
+
+@media screen and (max-height: 736px) {
+    .main-content {
+        height: 40em;
+    }
+}
+
+@media screen and (max-height: 667px) {
+    .main-content {
+        height: 36em;
+    }
+}
+
+@media screen and (max-height: 568px) {
+    .main-content {
+        height: 30.5em;
+    }
+}
