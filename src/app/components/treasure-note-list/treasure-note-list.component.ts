@@ -21,8 +21,12 @@ export class TreasureNoteListComponent implements OnInit {
   constructor(private noteService: NoteService, private userService: UserService) { }
 
   ngOnInit() {
+    this.noteService.RefreshGetNote.subscribe(()=>{
+      this.loadNotes();
+      this.getCurrentUserId();
+    })
     this.getCurrentUserId();
-    this.loadNotes();
+    this.loadNotes(); 
 
   }
 
