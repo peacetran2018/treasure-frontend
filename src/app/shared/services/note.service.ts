@@ -18,13 +18,13 @@ export class NoteService {
   }
 
   getNotes(): Observable<note[]> {
-    return this.httpClient.get<note[]>("http://peacetran2018-001-site1.etempurl.com/api/Values", {
+    return this.httpClient.get<note[]>("http://localhost:5000/api/Values", {
       headers: this.headers
     });
   }
 
   getNoteById(id: number, listNote: note[]) {
-    this.httpClient.get<note[]>("http://peacetran2018-001-site1.etempurl.com/api/Values", {
+    this.httpClient.get<note[]>("http://localhost:5000/api/Values", {
       headers: this.headers
     }).subscribe(data => {
       if(data.find(x => x.id == id) !== undefined){
@@ -41,7 +41,7 @@ export class NoteService {
   }
 
   storeData(value: note) {
-    return this.httpClient.post("http://peacetran2018-001-site1.etempurl.com/api/Values", value, { headers: this.headers });
+    return this.httpClient.post("http://localhost:5000/api/Values", value, { headers: this.headers });
   }
 
   deleteNotes(value: number[]) {
@@ -51,6 +51,6 @@ export class NoteService {
       }),
       body: value,
     };
-    return this.httpClient.delete("http://peacetran2018-001-site1.etempurl.com/api/Values?value=" + value, options);
+    return this.httpClient.delete("http://localhost:5000/api/Values?value=" + value, options);
   }
 }
